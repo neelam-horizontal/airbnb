@@ -15,7 +15,6 @@ const Logo = () => {
       width="100"
       alt="Logo"
     />
-    // <>p</>
    );
 }
  

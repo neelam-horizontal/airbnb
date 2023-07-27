@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-// import Button from "../Button";
+import Button from "../Button";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -42,6 +42,7 @@ const Modal: React.FC<ModalProps> = ({
     }
   
     setShowModal(false);
+    // just for animation we added this below line
     setTimeout(() => {
       onClose();
     }, 300)
@@ -55,6 +56,7 @@ const Modal: React.FC<ModalProps> = ({
     onSubmit();
   }, [onSubmit, disabled]);
 
+  // previous and next button
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) {
       return;
@@ -165,7 +167,7 @@ const Modal: React.FC<ModalProps> = ({
                     w-full
                   "
                 >
-                  {/* {secondaryAction && secondaryActionLabel && (
+                  {secondaryAction && secondaryActionLabel && (
                     <Button 
                       disabled={disabled} 
                       label={secondaryActionLabel} 
@@ -177,7 +179,7 @@ const Modal: React.FC<ModalProps> = ({
                     disabled={disabled} 
                     label={actionLabel} 
                     onClick={handleSubmit}
-                  /> */}
+                  />
                 </div>
                 {footer}
               </div>
