@@ -1,8 +1,8 @@
 'use client';
 
+import { signIn } from 'next-auth/react';
 import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
-import { signIn } from 'next-auth/react';
 import { 
   FieldValues, 
   SubmitHandler, 
@@ -16,16 +16,16 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 import Modal from "./Modal";
-import Input from "../inputs/Input";
 import Heading from "../Heading";
+import Input from "../inputs/Input";
 import Button from "../Button";
 
 const LoginModal = () => {
   const router = useRouter();
-  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const { 
     register, 
     handleSubmit,
