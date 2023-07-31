@@ -48,3 +48,49 @@ npx prisma db push
 npm install next-auth  @prisma/client @next-auth/prisma-adapter
 npm install bcrypt
 npm install -D @types/bcrypt
+
+
+<!-- Github Auth -->
+https://github.com/settings/developers
+New OAuth App
+details: name and url of project
+<!-- save these following data in .env -->
+client Id
+Client Secrets
+<!-- for img from github profile -->
+next.config.js =>
+images: {
+    domains: [
+        'avatars.githubusercontent.com',
+    ]
+}
+
+<!-- Google Auth -->
+https://console.cloud.google.com/welcome?project=eng-amphora-394511
+create new project
+select that project
+search api in top bar
+=> enable APIs & Services
+=> OAuth consent screen -> external -> create
+=> fill all the details: name, url, email -> save and continue
+=> Credentials => + create Credentials(new Credentials) => Create OAuth client ID(https://console.cloud.google.com/apis/credentials/oauthclient?previousPage=%2Fapis%2Fcredentials%3Fproject%3Dairbnb-394511&project=airbnb-394511)
+=>
+Application type: Web application
+Name: Web client 1
+Authorized redirect URIs:
+http://localhost:3000/api/auth/callback/google => create
+<!-- save these following data in .env -->
+client Id
+Client Secrets
+<!-- for img from google profile -->
+next.config.js =>
+images: {
+    domains: [
+        'lh3.googleusercontent.com',
+    ]
+}
+
+<!-- if you still get error -->
+remove .next folder
+npm run dev
+(new next module file will create)
