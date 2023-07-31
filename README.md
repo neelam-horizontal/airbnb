@@ -94,3 +94,7 @@ images: {
 remove .next folder
 npm run dev
 (new next module file will create)
+
+
+
+npm install query-string
