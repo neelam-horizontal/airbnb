@@ -3,8 +3,8 @@
 import qs from 'query-string';
 import dynamic from 'next/dynamic'
 import { useCallback, useMemo, useState } from "react";
-import { Range } from 'react-date-range';
-import { formatISO } from 'date-fns';
+// import { Range } from 'react-date-range';
+// import { formatISO } from 'date-fns';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import useSearchModal from "@/app/hooks/useSearchModal";
@@ -12,9 +12,9 @@ import useSearchModal from "@/app/hooks/useSearchModal";
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
-import CountrySelect, { 
-  CountrySelectValue
-} from "../inputs/CountrySelect";
+// import CountrySelect, { 
+//   CountrySelectValue
+// } from "../inputs/CountrySelect";
 import Heading from '../Heading';
 
 enum STEPS {
@@ -30,19 +30,19 @@ const SearchModal = () => {
 
   const [step, setStep] = useState(STEPS.LOCATION);
 
-  const [location, setLocation] = useState<CountrySelectValue>();
+  // const [location, setLocation] = useState<CountrySelectValue>();
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
   const [bathroomCount, setBathroomCount] = useState(1);
-  const [dateRange, setDateRange] = useState<Range>({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
-  });
+  // const [dateRange, setDateRange] = useState<Range>({
+  //   startDate: new Date(),
+  //   endDate: new Date(),
+  //   key: 'selection'
+  // });
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { 
-    ssr: false 
-  }), [location]);
+  // const Map = useMemo(() => dynamic(() => import('../Map'), { 
+  //   ssr: false 
+  // }), [location]);
 
   const onBack = useCallback(() => {
     setStep((value) => value - 1);
@@ -65,19 +65,19 @@ const SearchModal = () => {
 
     const updatedQuery: any = {
       ...currentQuery,
-      locationValue: location?.value,
+      // locationValue: location?.value,
       guestCount,
       roomCount,
       bathroomCount
     };
 
-    if (dateRange.startDate) {
-      updatedQuery.startDate = formatISO(dateRange.startDate);
-    }
+    // if (dateRange.startDate) {
+    //   updatedQuery.startDate = formatISO(dateRange.startDate);
+    // }
 
-    if (dateRange.endDate) {
-      updatedQuery.endDate = formatISO(dateRange.endDate);
-    }
+    // if (dateRange.endDate) {
+    //   updatedQuery.endDate = formatISO(dateRange.endDate);
+    // }
 
     const url = qs.stringifyUrl({
       url: '/',
@@ -95,7 +95,7 @@ const SearchModal = () => {
     router, 
     guestCount, 
     roomCount,
-    dateRange,
+    // dateRange,
     onNext,
     bathroomCount,
     params
@@ -123,13 +123,13 @@ const SearchModal = () => {
         title="Where do you wanna go?"
         subtitle="Find the perfect location!"
       />
-      <CountrySelect 
+      {/* <CountrySelect 
         value={location} 
         onChange={(value) => 
           setLocation(value as CountrySelectValue)} 
       />
       <hr />
-      <Map center={location?.latlng} />
+      <Map center={location?.latlng} /> */}
     </div>
   )
 
@@ -140,10 +140,10 @@ const SearchModal = () => {
           title="When do you plan to go?"
           subtitle="Make sure everyone is free!"
         />
-        <Calendar
+        {/* <Calendar
           onChange={(value) => setDateRange(value.selection)}
           value={dateRange}
-        />
+        /> */}
       </div>
     )
   }

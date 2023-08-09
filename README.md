@@ -98,3 +98,23 @@ npm run dev
 
 
 npm install query-string
+npm install world-countries
+npm install react-select
+npm install leaflet
+npm install -D @types/leaflet
+npm install react-leaflet
+<!-- make accoutn on cloudinary -->
+npm install next-cloudinary
+https://console.cloudinary.com/settingsc-0d21f73daaf516a277a5dd1fa3ad99/upload_presets/new
+-> Upload preset name: COPY TXT [SAVE IN ImageUpload.JSX -> uploadPreset]
+-> Signing Mode: UNSIGNED
+
+=> Upload presets:
+Unsigned uploading enabled: scc4ntyf : Unsigned
+
+<!-- =================== -->
+-> next.congig.js => "res.cloudinary.com"
+=> MEDIA LIBRARY: https://console.cloudinary.com/console/c-0d21f73daaf516a277a5dd1fa3ad99/media_library/search?q=
+
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME -> IN .ENV

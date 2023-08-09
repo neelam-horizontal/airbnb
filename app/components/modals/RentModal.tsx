@@ -11,13 +11,14 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from "react";
 
+import Modal from "./Modal";
 import useRentModal from '@/app/hooks/useRentModal';
 
-import Modal from "./Modal";
+import { categories } from '../navbar/Categories';
+
 import Counter from "../inputs/Counter";
 import CategoryInput from '../inputs/CategoryInput';
 import CountrySelect from "../inputs/CountrySelect";
-import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
@@ -68,6 +69,7 @@ const RentModal = () => {
   const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
 
+  // instead of importing traditional way, we hv to import map this below way
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
   }), [location]);
@@ -272,15 +274,15 @@ const RentModal = () => {
 
   return (
     <Modal
-      disabled={isLoading}
+      title="VactionBud your home!"
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
-      actionLabel={actionLabel}
+      onClose={rentModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-      onClose={rentModal.onClose}
       body={bodyContent}
+      disabled={isLoading}
     />
   );
 }
